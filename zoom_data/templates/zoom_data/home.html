@@ -1,0 +1,13 @@
+{% extends 'zoom_data/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class = "top">
+	ZOOM House Data
+</div>
+
+<h1>
+	<span><a href="{% url 'resident_list' %}" class = "btn btn-default">Residents</a></span>
+</h1>
+
+{% endblock %}

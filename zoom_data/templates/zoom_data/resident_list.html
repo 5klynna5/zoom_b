@@ -1,1 +1,38 @@
-<p> hello </p>
+{% extends 'zoom_data/base.html' %}
+
+{% block content %}
+
+<div class = "top">Current Residents</div>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Table Style</title>
+	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+</head>
+
+<div class = "content">
+	<table class="table-fill">
+	<thead>
+		<tr>
+			<th class="text-left">Resident Name</th>
+			<th class="text-left">Move-in Date</th>
+		</tr>
+	</thead>
+
+	<tbody class="table-hover">
+	{% for resident in residents %}
+		<tr>
+			<td class="text-left">
+				<a href="{% url 'resident_detail' pk=resident.pk %}">{{ resident }}</a>
+			</td>
+			<td class="text-left"> {{ resident.resident_move_in }} </td>
+		</tr> 
+	{% endfor %}
+	</tbody>
+	</table>
+</div> 
+
+	<a href="{% url 'resident_new' %}"><span class="glyphicon glyphicon-plus"></span>Add a resident</a>
+
+{% endblock %}

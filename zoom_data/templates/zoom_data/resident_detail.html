@@ -1,0 +1,82 @@
+{% extends 'zoom_data/base.html' %}
+
+{% load static %} 
+
+{% block content %}
+
+<style>
+
+ .chart {
+ 	float: right;
+  line-height: 40px;
+ }
+
+
+</style>
+
+
+<div class = "top">{{ resident }}</div>
+
+ <h1> Basic Information </h1>
+
+ <span class = "large-text">
+    <b> Move-in Date: </b> {{resident.resident_move_in}}
+    <br><b>Unit type: </b> {{resident.unit_type}} 
+    <br><b>Unit number: </b> {{resident.unit_num}}
+  </span>
+  <span class = "large-text"> 
+    <b> Phone: </b> {{resident.phone}}
+    <br><b>Email: </b> {{resident.email}}
+    <br><b>Contact Preferred: </b> {{resident.contact_preferred}}
+  </span>
+  <span class = "large-text"> 
+    <b> Health insurance: </b> {{resident.health_ins}}
+  </span>
+
+ <h1> Goals </h1> <a href="{% url 'goal_new' %}"><span class="glyphicon glyphicon-plus"></span> Add a goal</a>
+
+ <div class = "content">
+  <table class="table-fill">
+  <thead>
+    <tr>
+      <th class="text-left">Goal</th>
+      <th class="text-left">Progress</th>
+      <th class="text-left">Comments</th>
+    </tr>
+  </thead>
+
+  <tbody class="table-hover">
+  {% for goal in resident.goals %}
+    <tr>
+      <td class="text-left"> {{goal.goal_name}} </td>
+      <td class="text-left">    
+        <svg class="chart" width="500" height="30">
+          <g transform="translate(0,0)">
+            <rect width = "440" height ="30" rx="10" ry="10", style = "fill:white; stroke:black; margin:auto;"></rect>
+            {% if goal.current_progress == "25%" %}
+              <rect width="110" height="30" rx="8" ry="8", style = "fill:#ff883e; align:left;"></rect>
+              <text x="105" y="15" dy=".35em", style = "fill: white;font-size:20px; text-anchor: end;">{{goal.current_progress}}</text>
+            {% elif goal.current_progress == "less than 25%" %}
+              <rect width="30" height="30" rx="8" ry="8", style = "fill:#ff883e; align:left;"></rect>
+              <text x="40" y="15" dy=".35em", style = "fill: black;font-size:20px; text-anchor: start;">{{goal.current_progress}}</text>
+            {% elif goal.current_progress == "50%" %}
+              <rect width="220" height="30" rx="8" ry="8", style = "fill:#ff883e; align:left;"></rect>
+              <text x="215" y="15" dy=".35em", style = "fill: white;font-size:20px; text-anchor: end;">{{goal.current_progress}}</text>
+            {% elif goal.current_progress == "100%" %}
+              <rect width="440" height="30" rx="8" ry="8", style = "fill:#ff883e; align:left;"></rect>
+              <text x="435" y="15" dy=".35em", style = "fill: white;font-size:20px; text-anchor: end;">{{goal.current_progress}}</text>
+            {% endif %}
+          </g>
+        </svg>
+      </td>
+      <td class = "text-left">{{goal.goal_explain}}</td>
+    </tr> 
+  {% endfor %}
+  </tbody>
+  </table>
+</div> 
+
+<h1> Activities </h1>
+  	
+
+{% endblock %}
