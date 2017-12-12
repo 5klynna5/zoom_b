@@ -38,3 +38,7 @@ def resident_new(request):
         args['form'] = form
     return render(request, 'zoom_data/resident_edit.html', {'form': form})
 
+
+def activity_follow_up(request, pk):
+    resident = get_object_or_404(Resident, pk=pk)
+    return render(request, 'zoom_data/resident_detail.html', {'resident': resident})

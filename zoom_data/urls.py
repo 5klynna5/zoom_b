@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^resident/(?P<pk>\d+)/$', views.resident_detail, name='resident_detail'),
     url(r'^goal/new/$', views.goal_new, name='goal_new'),
     url(r'^resident/new/$', views.resident_new, name = 'resident_new'),
+    url(r'^activity/(?P<pk>\d+)/$', views.activity_follow_up, name='activity_follow_up'),
 ]

@@ -77,6 +77,28 @@
 </div> 
 
 <h1> Activities </h1>
+
+<div class = "content">
+	<table class="table-fill">
+	<thead>
+		<tr>
+			<th class="text-left">Activity Name</th>
+      <th class="text-left">Activity Complete Date</th>
+      <th class = "text-left">Follow up completed</th>
+		</tr>
+	</thead>
+
+	<tbody class="table-hover">
+	{% for activity in resident.activities %}
+		<tr>
+			<td class="text-left"> {{activity.activity}} </td>
+      <td class="text-left"> {{activity.complete_date}} </td>
+      <td class="text-left"> {{activity.complete_date}} </td>
+		</tr> 
+	{% endfor %}
+	</tbody>
+	</table>
+</div> 
   	
 
 {% endblock %}

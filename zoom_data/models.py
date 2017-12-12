@@ -54,6 +54,11 @@ class Resident(models.Model):
 	def __str__(self):
 		return (self.resident_last_name) + ', ' + (self.resident_first_name)
 
+	@property
+	def activities(self):
+		return self.attendance_set.all()
+
+
 
 class Contact(models.Model):
 	contact_resident = models.ForeignKey('Resident')
@@ -124,4 +129,28 @@ class Progress(models.Model):
 
 	def __str__(self):
 		return str(self.goal) + " " + str(self.date_progress)
+
+class Activity(models.Model):
+	activity_name = models.CharField(max_length=25)
+	
+	SKILL_CHOICES = (
+		('FINANCE', 'Finance'),
+		('PARENTING', 'Parenting'),
+		('EMPLOYMENT', 'Employment'),
+	)
+
+	skill_area = models.CharField(max_length = 15, choices=SKILL_CHOICES, blank=True, null=True)
+	members = models.ManyToManyField(Resident, through='Attendance')
+
+	def __str__(self):
+		return str(self.activity_name)
+
+
+class Attendance(models.Model):
+	resident = models.ForeignKey(Resident)
+	activity = models.ForeignKey(Activity)
+	complete_date = models.DateField(blank=True, null=True)
+
+	def __str__(self):
+		return str(self.activity)
 
