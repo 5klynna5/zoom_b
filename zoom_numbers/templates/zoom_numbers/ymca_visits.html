@@ -4,6 +4,10 @@
 
 <div class = "top">Visits to the YMCA</div>
 
+<div class = "add">
+	<a href="{% url 'ymca_new' %}"><span class="glyphicon glyphicon-plus"></span>Add a month's YMCA records</a>
+</div>
+
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -31,6 +35,6 @@
 	</table>
 </div> 
 
-<a href="{% url 'ymca_new' %}"><span class="glyphicon glyphicon-plus"></span>Add a month's YMCA records</a>
+
 
 {% endblock %}

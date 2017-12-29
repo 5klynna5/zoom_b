@@ -32,4 +32,13 @@
 		{% block content %}
 		{% endblock %}
 	</div>
+	<div id = "log-in-status">
+			{% if user.is_authenticated %}
+				You are logged in
+				<button type="button"><a href="{% url 'logout' %}"><span>log out</span></a></button>
+			{% else %}
+				You are NOT logged in
+				<button type="button"><a href="{% url 'login' %}"><span>log in</span></a></button>
+			{% endif %}
+	</div>
 </body>

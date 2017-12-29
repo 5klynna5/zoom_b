@@ -4,6 +4,10 @@
 
 <div class = "top">Current Residents</div>
 
+<div class = "add">
+	<a href="{% url 'resident_new' %}"><span class="glyphicon glyphicon-plus"></span>Add a resident</a>
+</div>
+
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -33,6 +37,5 @@
 	</table>
 </div> 
 
-	<a href="{% url 'resident_new' %}"><span class="glyphicon glyphicon-plus"></span>Add a resident</a>
 
 {% endblock %}

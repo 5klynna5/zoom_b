@@ -31,7 +31,17 @@
 		<span><a href="{% url 'volunteer_home' %}" class = "btn btn-default">Volunteers</a></span>
 	</h1>
 
-	<div class = "large-text">
+	<div id = "welcome">
 		Welcome to the ZOOM Database!
 	</div>
+	<div id = "log-in-status">
+			{% if user.is_authenticated %}
+				You are logged in
+				<button type="button"><a href="{% url 'logout' %}"><span>log out</span></a></button>
+			{% else %}
+				You are NOT logged in
+				<button type="button"><a href="{% url 'login' %}"><span>log in</span></a></button>
+			{% endif %}
+	</div>
+	
 </body>

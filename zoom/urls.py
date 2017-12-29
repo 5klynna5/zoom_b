@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
+    url(r'^login/$', auth_views.login, {'template_name': 'zoom_data/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'template_name': 'zoom_data/logout.html'}, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('zoom_data.urls')),
     url(r'', include('zoom_numbers.urls')),

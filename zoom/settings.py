@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '5klynna5.pythonanywhere.com']
 
-
+LOGIN_REDIRECT_URL = 'home'
 # Application definition
 
 INSTALLED_APPS = (

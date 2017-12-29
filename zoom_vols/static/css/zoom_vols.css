@@ -9,6 +9,11 @@
   border-radius: 10px;
 }
 
+.add {
+  float: right;
+  padding: 10px;
+}
+
 #header {
 padding-bottom: 30px;
 font-family: "Eurostile", Helvetica, sans-serif;
@@ -22,6 +27,15 @@ width: 25vw;
 float: right;
 }
 
+#log-in-status {
+  text-align: right;
+  padding: 10px;
+  color: white;
+  font-family: "Eurostile", Helvetica, sans-serif;
+  background-color: #ff883e;
+  margin: auto;
+  border-radius: 10px;
+}
 
 body {
     font-family: "Avenir Next", Helvetica, sans-serif;
