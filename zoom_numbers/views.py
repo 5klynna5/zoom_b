@@ -1,6 +1,25 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import YMCA, FoodShelf
+from .forms import YMCAForm
+
+def monthly_numbers(request):
+	return render(request, 'zoom_numbers/monthly_numbers.html')
 
 def ymca_visits(request):
 	visits = YMCA.objects.all()
-	return render(request, 'zoom_data/ymca_visits.html', {'visits': visits})
+	return render(request, 'zoom_numbers/ymca_visits.html', {'visits': visits})
+
+def food_shelf_visits(request):
+	visits = FoodShelf.objects.all()
+	return render(request, 'zoom_numbers/food_shelf_visits.html', {'visits': visits})
+
+def ymca_new(request):
+    if request.method == "POST":
+        form = YMCAForm(request.POST)
+        if form.is_valid():
+            ymca = form.save(commit=False)
+            ymca.save()
+            return redirect('ymca_visits')
+    else:
+        form = YMCAForm()
+    return render(request, 'zoom_numbers/ymca_edit.html', {'form': form})

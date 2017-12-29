@@ -31,34 +31,18 @@ class Resident(models.Model):
 		return self.goal_set.all()
 
 	@property
-	def phone(self):
-		if self.contact_set.all().order_by('-id').first() is None:
-			return "None"
-		else:
-			return self.contact_set.all().order_by('-id').first().resident_phone
-	
-	@property
-	def email(self):
-		if self.contact_set.all().order_by('-id').first() is None:
-			return "None"
-		else:
-			return self.contact_set.all().order_by('-date_updated').first().resident_email
-
-	@property
 	def contact_preferred(self):
 		if self.contact_set.all().order_by('-id').first() is None:
 			return "None"
 		else:
-			return self.contact_set.all().order_by('-date_updated').first().contact_pref
-
-	def __str__(self):
-		return (self.resident_last_name) + ', ' + (self.resident_first_name)
-
+			return self.contact_set.all().order_by('-date_updated').first()
+	
 	@property
 	def activities(self):
 		return self.attendance_set.all()
 
-
+	def __str__(self):
+		return (self.resident_last_name) + ', ' + (self.resident_first_name)
 
 class Contact(models.Model):
 	contact_resident = models.ForeignKey('Resident')

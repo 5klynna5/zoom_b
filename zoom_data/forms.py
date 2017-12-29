@@ -19,3 +19,4 @@ class ResidentForm(forms.ModelForm):
 		fields = ('resident_first_name', 'resident_last_name', 'resident_move_in')
 		widgets = {'resident_move_in': DateInput()}
        
+	   

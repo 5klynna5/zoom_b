@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'zoom_data',
+    'zoom_numbers',
+    'zoom_vols',
 )
 
 MIDDLEWARE_CLASSES = (

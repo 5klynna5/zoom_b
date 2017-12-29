@@ -1,12 +1,25 @@
 .top {
-      text-align: right;
-      padding: 30px;
-      font-size: 300%;
-      color: white;
-      font-family: "Eurostile", Helvetica, sans-serif;
-      background-color: #ff883e;
-      margin: auto;
-      border-radius: 10px;
+  text-align: right;
+  padding: 10px;
+  font-size: 200%;
+  color: white;
+  font-family: "Eurostile", Helvetica, sans-serif;
+  background-color: #ff883e;
+  margin: auto;
+  border-radius: 10px;
+}
+
+#header {
+padding-bottom: 30px;
+font-family: "Eurostile", Helvetica, sans-serif;
+color:#474da4;
+text-align: left;
+
+}
+
+#zoom_logo {
+width: 25vw;
+float: right;
 }
 
 

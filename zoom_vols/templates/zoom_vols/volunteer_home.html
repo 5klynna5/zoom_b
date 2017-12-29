@@ -1,0 +1,12 @@
+{% extends 'zoom_vols/base.html' %}
+
+{% block content %}
+
+<div class = "top">ZOOM Volunteers</div>
+
+<h1>
+    <span><a href="{% url 'volunteer_list' %}" class = "btn btn-default">List of Volunteers</a></span>
+    <span><a href="{% url 'hours_new' %}" class = "btn btn-default">Add Hours for Volunteer</a></span>
+</h1>
+
+{% endblock %}

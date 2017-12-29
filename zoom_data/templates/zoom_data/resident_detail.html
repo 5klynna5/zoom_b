@@ -14,23 +14,21 @@
 
 </style>
 
-
-<div class = "top">{{ resident }}</div>
-
  <h1> Basic Information </h1>
 
  <span class = "large-text">
-    <b> Move-in Date: </b> {{resident.resident_move_in}}
-    <br><b>Unit type: </b> {{resident.unit_type}} 
+    <b> Resident Name: </b> {{resident}}
+    <br><b> Move-in Date: </b> {{resident.resident_move_in}}
+    <br><b> Health insurance: </b> {{resident.health_ins}}
+  </span>
+  <span class = "large-text"> 
+    <b> Phone: </b> {{resident.contact_preferred.resident_phone}}
+    <br><b>Email: </b> {{resident.contact_preferred.resident_email}}
+    <br><b>Contact Preferred: </b> {{resident.contact_preferred.contact_pref}}
+  </span>
+  <span class = "large-text"> 
+    <b>Unit type: </b> {{resident.unit_type}} 
     <br><b>Unit number: </b> {{resident.unit_num}}
-  </span>
-  <span class = "large-text"> 
-    <b> Phone: </b> {{resident.phone}}
-    <br><b>Email: </b> {{resident.email}}
-    <br><b>Contact Preferred: </b> {{resident.contact_preferred}}
-  </span>
-  <span class = "large-text"> 
-    <b> Health insurance: </b> {{resident.health_ins}}
   </span>
 
  <h1> Goals </h1> <a href="{% url 'goal_new' %}"><span class="glyphicon glyphicon-plus"></span> Add a goal</a>
@@ -84,7 +82,6 @@
 		<tr>
 			<th class="text-left">Activity Name</th>
       <th class="text-left">Activity Complete Date</th>
-      <th class = "text-left">Follow up completed</th>
 		</tr>
 	</thead>
 
@@ -93,12 +90,57 @@
 		<tr>
 			<td class="text-left"> {{activity.activity}} </td>
       <td class="text-left"> {{activity.complete_date}} </td>
-      <td class="text-left"> {{activity.complete_date}} </td>
 		</tr> 
 	{% endfor %}
 	</tbody>
 	</table>
 </div> 
-  	
+
+
+<h1>Permissions</h1>
+
+
+<html lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+        </head>
+        
+        <div class = "content">
+            <table class="table-fill">
+            <thead>
+                <tr>
+                    <th class="text-left">Contact type</th>
+                    <th class="text-left">Permission</th>
+                </tr>
+            </thead>
+        
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left"> PHOTO </td>
+                    <td class="text-left"> {{ resident.contact_preferred.permission_photo }} </td>
+                </tr> 
+                <tr>
+                    <td class="text-left"> TEXT </td>
+                    <td class="text-left"> {{ resident.contact_preferred.permission_text }} </td>
+                </tr> 
+                <tr>
+                    <td class="text-left"> EMAIL </td>
+                    <td class="text-left"> {{ resident.contact_preferred.permission_email }} </td>
+                </tr> 
+                <tr>
+                        <td class="text-left"> PHONE </td>
+                        <td class="text-left"> {{ resident.contact_preferred.permission_call }} </td>
+                </tr> 
+                <tr>
+                        <td class="text-left"> MAIL </td>
+                        <td class="text-left"> {{ resident.contact_preferred.permission_mail }} </td>
+                </tr>
+                <tr>
+                        <td class="text-left"> FACEBOOK </td>
+                        <td class="text-left"> {{ resident.contact_preferred.permission_facebook }} </td>
+                </tr> 
+            </tbody>
+            </table>
 
 {% endblock %}

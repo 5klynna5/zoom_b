@@ -20,4 +20,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('zoom_data.urls')),
+    url(r'', include('zoom_numbers.urls')),
+    url(r'', include('zoom_vols.urls')),
 ]

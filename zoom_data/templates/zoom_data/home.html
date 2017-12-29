@@ -1,13 +1,37 @@
-{% extends 'zoom_data/base.html' %}
+
 {% load static %}
 
-{% block content %}
-<div class = "top">
-	ZOOM House Data
-</div>
+<head>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+		<link rel="stylesheet" href="{% static 'css/zoom_data.css' %}">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+</head>
 
-<h1>
-	<span><a href="{% url 'resident_list' %}" class = "btn btn-default">Residents</a></span>
-</h1>
+<body>
+	<div id = "header">
+		<img id = "zoom_logo" src="/static/images/ZOOM-logo.png">
+	</div>
 
-{% endblock %}
+	<h1>
+		<span><a href="{% url 'resident_list' %}" class = "btn btn-default">Residents</a></span>
+		<span><a href="{% url 'monthly_numbers' %}" class = "btn btn-default">Monthly Numbers</a></span>
+		<span><a href="{% url 'volunteer_home' %}" class = "btn btn-default">Volunteers</a></span>
+	</h1>
+
+	<div class = "large-text">
+		Welcome to the ZOOM Database!
+	</div>
+</body>
