@@ -4,7 +4,9 @@ from .forms import GoalForm, ResidentForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/login/')
 def home(request):
+    ##make a json from the database to use in d3 viz
     return render(request,'zoom_data/home.html')
 
 @login_required(login_url='/login/')

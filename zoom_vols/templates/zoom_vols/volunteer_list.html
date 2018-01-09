@@ -2,7 +2,14 @@
 
 {% block content %}
 
+<div id = "header">
+    <a href="{% url 'volunteer_home' %}"><span class="glyphicon glyphicon-triangle-left"></span> Return to Volunteer Home</a>
+    <span><img id = "zoom_logo" src="/static/images/ZOOM-logo.png"></span>
+</div>
+
 <h1>Active Volunteers</h1>
+
+<a href="{% url 'volunteer_new' %}"><span class="glyphicon glyphicon-plus"></span>Add a volunteer</a>
 
 <html lang="en">
 <head>
@@ -20,7 +27,6 @@
 			<th class="text-left">Last Volunteer Activity</th>
 			<th class="text-left">Interests</th>
 			<th class="text-left">Total Volunteer Hours</th>
-			<th class="text-left">Add Hours</th>
 			
 		</tr>
 	</thead>
@@ -39,13 +45,12 @@
 				 	{% endfor %}
 			</td>
 			<td class="text-left"> {{ volunteer.total_hours.sum }} </td>
-			<td class="text-left"> <a href="{% url 'hours_new' %}" class = "btn btn-default"><span class="glyphicon glyphicon-plus"></span>Add hours</a></td>
 		</tr> 
 	{% endfor %}
 	</tbody>
 	</table>
 </div> 
 
-	<a href="{% url 'volunteer_new' %}"><span class="glyphicon glyphicon-plus"></span>Add a volunteer</a>
+	
 
 {% endblock %}

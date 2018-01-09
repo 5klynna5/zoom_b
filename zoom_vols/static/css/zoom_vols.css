@@ -37,6 +37,17 @@ float: right;
   border-radius: 10px;
 }
 
+#edit {
+  float: left;
+}
+
+.dashboard {
+  font-family: "Avenir Next", Helvetica, sans-serif;
+  padding: 20px;
+  font-size: 150%;
+  color: #474da4;
+}
+
 body {
     font-family: "Avenir Next", Helvetica, sans-serif;
     padding: 20px;
@@ -105,6 +116,7 @@ p {
     border: none;
     color: white;
     padding: 15px 32px;
+    margin: 20px;
     text-align: center;
     float: left;
     text-decoration: none;

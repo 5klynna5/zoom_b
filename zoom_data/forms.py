@@ -16,7 +16,7 @@ class ResidentForm(forms.ModelForm):
 
 	class Meta:
 		model = Resident
-		fields = ('resident_first_name', 'resident_last_name', 'resident_move_in')
+		exclude = ('resident_exit',)
 		widgets = {'resident_move_in': DateInput()}
        
 	   

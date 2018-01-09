@@ -7,6 +7,32 @@ class Resident(models.Model):
 	resident_last_name = models.CharField(max_length=20)
 	resident_move_in = models.DateField(help_text="Please use the following format: <em>YYYY-MM-DD</em>.")
 	
+	GENDER_CHOICES = (
+		('FEMALE', 'Female'),
+		('MALE', 'Male'),
+		('ALT', 'Another gender'),
+	)
+
+	gender = models.CharField(max_length = 6, choices = GENDER_CHOICES, blank=True, null=True)
+	
+	RACE_CHOICES = (
+		('AFRICAN_AMERICAN', 'African American'),
+		('WHITE', 'White'),
+		('MULTIRACIAL', 'Multiracial'),
+		('AMER_INDIAN', 'American Indian'),
+		('PAC_ISLANDER', 'Native Hawaiian or Pacific Islander'),
+		('ASIAN_AMERICAN', 'Asian American'),
+	)
+
+	race = models.CharField(max_length = 16, choices = RACE_CHOICES, blank=True, null=True)
+
+	ETHNICITY_CHOICES = (
+		('HISPANIC', 'Hispanic'),
+		('NON-HISPANIC', 'Non-Hispanic'),
+	)
+
+	ethnicity = models.CharField(max_length = 12, choices = ETHNICITY_CHOICES, blank=True, null=True)
+
 	INSURANCE_CHOICES = (
 		('NONE', 'None'),
 		('PRIVATE', 'Private'),
@@ -114,6 +140,42 @@ class Progress(models.Model):
 	def __str__(self):
 		return str(self.goal) + " " + str(self.date_progress)
 
+class Child(models.Model):
+	first_name = models.CharField(max_length = 15, blank=True, null=True)
+	last_name = models.CharField(max_length=15, blank=True, null=True)
+	head_of_household = models.ForeignKey(Resident)
+	dob = models.DateField(blank=True, null=True)
+
+	GENDER_CHOICES = (
+		('FEMALE', 'Female'),
+		('MALE', 'Male'),
+		('ALT', 'Another gender'),
+	)
+
+	gender = models.CharField(max_length = 6, choices = GENDER_CHOICES, blank=True, null=True)
+
+	RACE_CHOICES = (
+		('AFRICAN_AMERICAN', 'African American'),
+		('WHITE', 'White'),
+		('MULTIRACIAL', 'Multiracial'),
+		('AMER_INDIAN', 'American Indian'),
+		('PAC_ISLANDER', 'Native Hawaiian or Pacific Islander'),
+		('ASIAN_AMERICAN', 'Asian American'),
+	)
+
+	race = models.CharField(max_length = 16, choices = RACE_CHOICES, blank=True, null=True)
+
+	ETHNICITY_CHOICES = (
+		('HISPANIC', 'Hispanic'),
+		('NON-HISPANIC', 'Non-Hispanic'),
+	)
+
+	ethnicity = models.CharField(max_length = 12, choices = ETHNICITY_CHOICES, blank=True, null=True)
+
+	def __str__(self):
+		return str(self.first_name) + " " + str(self.last_name)
+
+
 class Activity(models.Model):
 	activity_name = models.CharField(max_length=25)
 	
@@ -121,10 +183,31 @@ class Activity(models.Model):
 		('FINANCE', 'Finance'),
 		('PARENTING', 'Parenting'),
 		('EMPLOYMENT', 'Employment'),
+		('FITNESS', 'Fitness'),
 	)
 
 	skill_area = models.CharField(max_length = 15, choices=SKILL_CHOICES, blank=True, null=True)
+
+	MONTH_CHOICES = (
+		('Jan', 'January'),
+		('Feb', 'February'),
+		('Mar', 'March'),
+		('Apr', 'April'),
+		('May', 'May'),
+		('Jun', 'June'),
+		('Jul', 'July'),
+		('Aug', 'August'),
+		('Sep', 'September'),
+		('Oct', 'October'),
+		('Nov', 'November'),
+		('Dec', 'December'),
+	)
+
+	month = models.CharField(max_length = 3, choices = MONTH_CHOICES, blank=True, null=True)
+	year = models.PositiveSmallIntegerField(null=True)
+	
 	members = models.ManyToManyField(Resident, through='Attendance')
+	children = models.ManyToManyField(Child, through='ChildAttendance')
 
 	def __str__(self):
 		return str(self.activity_name)
@@ -138,3 +221,10 @@ class Attendance(models.Model):
 	def __str__(self):
 		return str(self.activity)
 
+class ChildAttendance(models.Model):
+	child = models.ForeignKey(Child)
+	activity = models.ForeignKey(Activity)
+	complete_date = models.DateField(blank=True, null=True)
+
+	def __str__(self):
+		return str(self.activity)

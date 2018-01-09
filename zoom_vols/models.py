@@ -83,3 +83,13 @@ class Hours(models.Model):
 	
 	def __str__(self):
 		return str(self.volunteer) + ' ' + str(self.date) + ' ' + str(self.volunteer_activity)
+
+class VolunteerGroup(models.Model):
+	group_org = models.CharField(max_length = 25, blank=True, null=True)
+	num_volunteers = models.SmallIntegerField(blank=True, null=True)
+	date = models.DateField(help_text="Please use the following format: <em>YYYY-MM-DD</em>.")
+	hours_num = models.PositiveSmallIntegerField()
+	volunteer_activity = models.ForeignKey(Activity, blank=True, null=True)
+
+	def __str__(self):
+		return str(self.group_org) + ' ' + str(self.date)
